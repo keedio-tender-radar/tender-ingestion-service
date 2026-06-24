@@ -73,7 +73,7 @@ class TedConnector(BaseConnector):
             "fields": _FIELDS,
             "page": 1,
             "limit": self.limit,
-            "scope": "ALL",
+            "scope": settings.ted_scope,
         }
         with httpx.Client(timeout=self.timeout) as client:
             resp = client.post(self.url, json=body, headers={"Accept": "application/json"})
