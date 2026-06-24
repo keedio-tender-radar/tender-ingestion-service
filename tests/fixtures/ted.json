@@ -1,24 +1,31 @@
 {
   "notices": [
     {
-      "publication-number": "2026-OJS-000123",
-      "title": "Servicio de integración de APIs e inteligencia artificial",
-      "description": "Integración de sistemas corporativos y modelos de IA.",
-      "classification-cpv": ["72200000"],
+      "publication-number": "430921-2026",
+      "notice-title": {
+        "spa": "España – Servicios TI – Servicio de integración de APIs e inteligencia artificial",
+        "eng": "Spain – IT services – API integration and AI service"
+      },
+      "buyer-name": { "spa": ["Comisión Europea - DG X"] },
+      "classification-cpv": ["72200000", "72200000"],
       "total-value": 280000,
-      "deadline-receipt-tender": "2026-07-18T23:59:00Z",
-      "buyer-name": "Comisión Europea - DG X",
-      "links_self": "https://ted.europa.eu/notice/2026-OJS-000123"
+      "publication-date": "2026-06-24+02:00",
+      "links": {
+        "htmlDirect": { "SPA": "https://ted.europa.eu/es/notice/430921-2026/html" }
+      }
     },
     {
-      "publication-number": "2026-OJS-000999",
-      "title": "Suministro de mobiliario de oficina",
-      "description": "Mobiliario y enseres para oficinas.",
+      "publication-number": "430999-2026",
+      "notice-title": {
+        "spa": "España – Mobiliario – Suministro de mobiliario de oficina"
+      },
+      "buyer-name": { "spa": ["Organismo Y"] },
       "classification-cpv": ["39100000"],
       "total-value": 50000,
-      "deadline-receipt-tender": "2026-08-01",
-      "buyer-name": "Organismo Y",
-      "links_self": "https://ted.europa.eu/notice/2026-OJS-000999"
+      "publication-date": "2026-06-23+02:00",
+      "links": {
+        "html": { "SPA": "https://ted.europa.eu/es/notice/430999-2026/detail" }
+      }
     }
   ]
 }

@@ -25,6 +25,13 @@ class Settings(BaseSettings):
         "https://contrataciondelestado.es/sindicacion/sindicacion_643/licitacionesPerfilContratante.atom"
     )
     ted_api_url: str = "https://api.ted.europa.eu/v3/notices/search"
+    # Consulta en sintaxis "expert" de TED v3 (POST). Por defecto: servicios TI en España,
+    # más recientes primero. Ajustable por entorno.
+    ted_query: str = (
+        "classification-cpv IN (72000000) AND place-of-performance IN (ESP) "
+        "SORT BY publication-date DESC"
+    )
+    ted_limit: int = 50
 
     # Filtros (CPV por prefijo). Coma-separados en env: CPV_PREFERRED="72,48".
     cpv_preferred: str = "72,48"

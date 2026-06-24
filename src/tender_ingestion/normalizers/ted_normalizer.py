@@ -16,7 +16,7 @@ def normalize(raw: dict) -> TenderPayload:
         buyer=(raw.get("buyer") or None),
         budget_amount=cn.to_float(raw.get("budget_amount")),
         currency="EUR",
-        publication_date=None,
+        publication_date=cn.to_date(raw.get("publication_date")),
         deadline=cn.to_datetime(raw.get("deadline")),
         url=(raw.get("url") or None),
     )

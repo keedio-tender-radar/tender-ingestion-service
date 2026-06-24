@@ -1,4 +1,4 @@
-from datetime import UTC, date, datetime
+from datetime import date, datetime
 
 from tender_ingestion.connectors.placsp_connector import PlacspConnector
 from tender_ingestion.connectors.ted_connector import TedConnector
@@ -21,8 +21,11 @@ def test_ted_normalize(ted_json):
     raw = TedConnector("x").parse(ted_json)[0]
     p = ted_normalizer.normalize(raw)
     assert p.source == "ted"
+    assert p.source_id == "430921-2026"
     assert p.budget_amount == 280000.0
-    assert p.deadline == datetime(2026, 7, 18, 23, 59, tzinfo=UTC)
+    assert p.cpv == ["72200000"]  # dedupe del normalizador
+    assert p.publication_date == date(2026, 6, 24)
+    assert p.deadline is None  # TED v3 no expone plazo a nivel de nota
 
 
 def test_to_float_european_format():

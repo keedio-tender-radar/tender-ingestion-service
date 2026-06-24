@@ -48,7 +48,7 @@ def test_full_ingestion_filters_and_publishes(monkeypatch, placsp_atom, ted_json
     assert result.errors == []
 
     ids = {p.source_id for p in api.published}
-    assert ids == {"PLACSP-2026-000184", "2026-OJS-000123"}
+    assert ids == {"PLACSP-2026-000184", "430921-2026"}
 
 
 def test_connector_error_is_isolated(monkeypatch, ted_json):

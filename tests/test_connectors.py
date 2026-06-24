@@ -37,9 +37,15 @@ def test_placsp_parse(placsp_atom):
 def test_ted_parse(ted_json):
     rows = TedConnector("x").parse(ted_json)
     assert len(rows) == 2
-    assert rows[0]["source_id"] == "2026-OJS-000123"
-    assert rows[0]["cpv"] == ["72200000"]
-    assert rows[0]["budget_amount"] == 280000
+    first = rows[0]
+    assert first["source_id"] == "430921-2026"
+    assert "integración de APIs" in first["title"]  # toma el idioma 'spa'
+    assert first["cpv"] == ["72200000", "72200000"]  # dedupe lo hace el normalizador
+    assert first["budget_amount"] == 280000
+    assert first["buyer"] == "Comisión Europea - DG X"
+    assert first["url"] == "https://ted.europa.eu/es/notice/430921-2026/html"
+    assert first["publication_date"] == "2026-06-24+02:00"
+    assert first["deadline"] is None
 
 
 def test_connector_fetch_uses_fetch_raw(monkeypatch, ted_json):
