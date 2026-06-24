@@ -20,6 +20,9 @@ class Settings(BaseSettings):
     # Backend al que se publican las licitaciones.
     api_url: str = "http://localhost:8000"
 
+    # Token opcional para proteger POST /run (el scheduler envía X-Run-Token).
+    run_token: str = ""
+
     # Fuentes.
     placsp_feed_url: str = (
         "https://contrataciondelestado.es/sindicacion/sindicacion_643/licitacionesPerfilContratante.atom"
