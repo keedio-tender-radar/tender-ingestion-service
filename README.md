@@ -44,3 +44,19 @@ ruff check src tests
 - **Idempotencia**: la deduplicación entre ejecuciones la garantiza `tender-api` (upsert por
   `source`+`source_id`); el `duplicate_filter` evita reprocesar dentro del mismo lote.
 - Listas de CPV/keywords configurables por entorno (ver `.env.example`).
+
+## Acceso a fuentes reales (importante)
+
+Verificado el 2026-06-24:
+
+- **PLACSP**: los feeds de sindicación `/sindicacion/sindicacion_643/*.atom` devuelven una página
+  de error *"Su certificado no está autorizado a acceder a la Plataforma"* (redirección al
+  portal). Es decir, requieren **certificado / acceso autorizado** (o la URL de open-data
+  correcta). El conector ahora detecta respuestas no-ATOM y lanza `PlacspAccessError` con un
+  diagnóstico claro en vez de un `ParseError` críptico. Configura la fuente con `PLACSP_FEED_URL`.
+- **TED v3** (`/notices/search`): responde **405** a GET; la API espera **POST** con un cuerpo de
+  consulta (y probablemente API key). El `TedConnector` parsea JSON; falta adaptar la llamada al
+  contrato real de TED v3.
+
+Mientras tanto, el radar se puede poblar sembrando licitaciones vía `POST /api/tenders` (ver
+demo) y puntuándolas con `tender-ai-analysis-service`.

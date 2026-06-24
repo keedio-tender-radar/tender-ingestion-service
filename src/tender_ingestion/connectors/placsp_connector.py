@@ -33,10 +33,25 @@ def _all_texts(entry: ET.Element, localnames: set[str]) -> list[str]:
     return out
 
 
+class PlacspAccessError(RuntimeError):
+    """La respuesta de PLACSP no es un feed ATOM (p. ej. página de error/redirección)."""
+
+
 class PlacspConnector(BaseConnector):
     name = "placsp"
 
     def parse(self, raw: str) -> list[dict]:
+        snippet = raw.lstrip()[:400].lower()
+        if "<feed" not in raw[:2000].lower():
+            # PLACSP devuelve HTML cuando el acceso no está autorizado o la URL no es válida.
+            reason = "respuesta no ATOM"
+            if "certificado" in snippet or "error de acceso" in snippet:
+                reason = "acceso no autorizado (PLACSP exige certificado/acceso autorizado)"
+            elif "redireccion" in snippet or "<html" in snippet:
+                reason = "PLACSP devolvió una página HTML (¿URL de feed incorrecta?)"
+            raise PlacspAccessError(
+                f"El feed PLACSP no es ATOM: {reason}. Revisa PLACSP_FEED_URL / acceso."
+            )
         root = ET.fromstring(raw)
         entries = root.findall(f"{_ATOM}entry") or root.findall(".//" + f"{_ATOM}entry")
         results: list[dict] = []

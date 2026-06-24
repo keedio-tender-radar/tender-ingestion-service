@@ -1,5 +1,24 @@
-from tender_ingestion.connectors.placsp_connector import PlacspConnector
+import pytest
+
+from tender_ingestion.connectors.placsp_connector import PlacspAccessError, PlacspConnector
 from tender_ingestion.connectors.ted_connector import TedConnector
+
+_PLACSP_ERROR_PAGE = (
+    '<html><head><meta http-equiv="refresh" content="5;url=http://contrataciondelestado.es"></head>'
+    "<body><h2>Su certificado no está autorizado a acceder a la Plataforma.</h2>"
+    "<p>Se ha producido un error de acceso. Redireccionando...</p></body></html>"
+)
+
+
+def test_placsp_rejects_non_atom_access_error():
+    with pytest.raises(PlacspAccessError) as exc:
+        PlacspConnector("x").parse(_PLACSP_ERROR_PAGE)
+    assert "acceso no autorizado" in str(exc.value)
+
+
+def test_placsp_rejects_plain_html():
+    with pytest.raises(PlacspAccessError):
+        PlacspConnector("x").parse("<html><body>algo</body></html>")
 
 
 def test_placsp_parse(placsp_atom):
