@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:cbc="urn:codice:cbc" xmlns:cac="urn:codice:cac">
+  <title>Licitaciones del Perfil de Contratante</title>
+  <updated>2026-06-21T11:00:00Z</updated>
+  <entry>
+    <id>https://contrataciondelestado.es/expedientes/PLACSP-2026-000184</id>
+    <title>Plataforma de datos sanitarios con servicios de IA</title>
+    <summary>Diseño, desarrollo y explotación de una plataforma de datos y analítica avanzada.</summary>
+    <updated>2026-06-20T10:00:00Z</updated>
+    <link href="https://contrataciondelestado.es/wps/PLACSP-2026-000184"/>
+    <cac:ProcurementProject>
+      <cbc:Name>Servicio de Salud de la Comunidad</cbc:Name>
+      <cbc:ItemClassificationCode>72300000</cbc:ItemClassificationCode>
+      <cbc:TotalAmount>620.000,00</cbc:TotalAmount>
+    </cac:ProcurementProject>
+    <cac:TenderSubmissionDeadlinePeriod>
+      <cbc:EndDate>2026-07-15</cbc:EndDate>
+    </cac:TenderSubmissionDeadlinePeriod>
+  </entry>
+  <entry>
+    <id>https://contrataciondelestado.es/expedientes/PLACSP-2026-000200</id>
+    <title>Obra civil de reforma de edificio administrativo</title>
+    <summary>Construcción y reforma integral del edificio.</summary>
+    <updated>2026-06-21T10:00:00Z</updated>
+    <link href="https://contrataciondelestado.es/wps/PLACSP-2026-000200"/>
+    <cac:ProcurementProject>
+      <cbc:ItemClassificationCode>45000000</cbc:ItemClassificationCode>
+      <cbc:TotalAmount>1.200.000,00</cbc:TotalAmount>
+    </cac:ProcurementProject>
+  </entry>
+</feed>
