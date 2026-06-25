@@ -20,7 +20,8 @@ class BaseConnector(ABC):
 
     def fetch_raw(self) -> str:
         """Descarga el contenido crudo de la fuente. Sobreescribible/mockeable en tests."""
-        with httpx.Client(timeout=self.timeout) as client:
+        headers = {"User-Agent": "KeedioTenderRadar/1.0 (+ingestion)", "Accept": "*/*"}
+        with httpx.Client(timeout=self.timeout, follow_redirects=True, headers=headers) as client:
             resp = client.get(self.url)
             resp.raise_for_status()
             return resp.text

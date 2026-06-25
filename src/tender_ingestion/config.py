@@ -24,8 +24,10 @@ class Settings(BaseSettings):
     run_token: str = ""
 
     # Fuentes.
+    # Open data de PLACSP (sin certificado). El feed agregado publica todas las licitaciones.
     placsp_feed_url: str = (
-        "https://contrataciondelestado.es/sindicacion/sindicacion_643/licitacionesPerfilContratante.atom"
+        "https://contrataciondelestado.es/sindicacion/sindicacion_1044/"
+        "PlataformasAgregadasSinMenores.atom"
     )
     ted_api_url: str = "https://api.ted.europa.eu/v3/notices/search"
     # Consulta en sintaxis "expert" de TED v3 (POST). Por defecto: anuncios de licitación
