@@ -29,6 +29,11 @@ class Settings(BaseSettings):
         "https://contrataciondelestado.es/sindicacion/sindicacion_1044/"
         "PlataformasAgregadasSinMenores.atom"
     )
+    # PLACSP — perfil del Estado (AGE), complementa a las plataformas agregadas (CCAA/local).
+    placsp_estado_feed_url: str = (
+        "https://contrataciondelestado.es/sindicacion/sindicacion_643/"
+        "licitacionesPerfilesContratanteCompleto3.atom"
+    )
     ted_api_url: str = "https://api.ted.europa.eu/v3/notices/search"
     # Consulta en sintaxis "expert" de TED v3 (POST). Por defecto: anuncios de licitación
     # ABIERTOS (cn-standard, no adjudicaciones) de TI+software en España, últimos 30 días,

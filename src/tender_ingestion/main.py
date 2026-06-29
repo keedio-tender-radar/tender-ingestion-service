@@ -29,6 +29,12 @@ def build_sources() -> list[Source]:
         Source(PlacspConnector(settings.placsp_feed_url), placsp_normalizer.normalize),
         Source(TedConnector(settings.ted_api_url), ted_normalizer.normalize),
     ]
+    if settings.placsp_estado_feed_url:
+        sources.append(
+            Source(
+                PlacspConnector(settings.placsp_estado_feed_url), placsp_normalizer.normalize
+            )
+        )
     sources.extend(extra_portal_sources(settings.extra_portal_feeds_json))
     return sources
 
